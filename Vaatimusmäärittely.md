@@ -1,24 +1,6 @@
-# Ruokapäiväkirja
+# Vaatimusmäärittely
 
-## Projekti
-
-Tietokannat TTC2020-3027
-
-### Nimi
-
-Matilda Stenius, AB8577
-
-### Versio
-
-v0.0.1
-
-### Päiväys
-
-21.4.2023
-
-## Vaatimusmäärittely
-
-### Johdanto
+## Johdanto
 
 Harjoitustyön tavoitteena on tehdä tietokanta ruokapäiväkirjalle. Tarkoituksena on tallentaa päivän aikana syödyt ruuat ja näiden tiedot. Tärkeää on, että ei tarvitse syöttää samoja tietoja uudelleen esim. 100g perunaa muussissa on sama asia kuin 100g perunaa kinkkukiusauksessa. Ruokapäiväkirja menee usean ihmisen käyttöön ja käyttäjiä voi olla useampia. Tietokannan tietojen avulla pitäisi pystyä laskemaan päivän kalorit ja seuraamaan painoa.
 
@@ -26,12 +8,11 @@ Tämän harjoitustyön on tarkoitus olla minimi versio ilman ylimääräisiä ti
 
 Tietokanta rajataan mobiili ja web-käyttöliittymien käyttöön.
 
-### Yleiskuvaus
+## Yleiskuvaus
 
-TODO eka versio omal koneel
-TODO eka versio pelkkä tietokanta
-TODO toteutustyökalu workbench ja jamkin mariadb
-TODO Oikeuksien hallinta yms. rajataan ensimmäisen version ulkopuolelle
+Ensimmäinen versio pelkkä tietokanta.
+Toteutustyökaluna workbench ja jamkin mariadb
+Oikeuksien hallinta, tietoturva yms. rajataan ensimmäisen version ulkopuolelle
 
 Käyttäjiä on seuraavanlaisia:
 
@@ -40,14 +21,16 @@ Käyttäjiä on seuraavanlaisia:
 - Käyttäjä voi haluta laskea kaloreita.
 - Käyttäjä haluaa valmiin annosreseptin laskettuna ruoka-ainesosien kalorit.
 
-### Toiminnot
+## Toiminnot
 
-#### Esimerkkiraportit
+### Esimerkkiraportit
 
-TODO päivän kalorit
-TODO painon seuranta
+Tietokannan avulla pitäisi mm. pystyä tekemään seuraavanlaisia kyselyitä:
 
-#### Käyttäjien ylläpito
+- Lasketaan jonkun henkilön yhteiskalorit tietylle päivälle
+- Seurataan painon muutosta ajallisesti esim. 2 viikon ajalta
+
+### Käyttäjien ylläpito
 
 - käyttäjäID (PK)
 - nimimerkki (Pakollinen)
@@ -57,7 +40,7 @@ TODO painon seuranta
 - pituus
   - Pituus on hyvä olla terveys laskennojen takia, mutta ei ole pakollinen, jos käyttäjällä ei ole tarvetta näihin ominaisuuksiin.
 
-#### Painonmittausten ylläpito
+### Painonmittausten ylläpito
 
 - painonmittausID (PK)
 - paino (Pakollinen)
@@ -66,13 +49,13 @@ TODO painon seuranta
   - Pakollinen, jotta päästään seuraamaan painon kehitystä.
 - käyttäjäID (FK)
 
-#### Ruoka-annosten ylläpito
+### Ruoka-annosten ylläpito
 
 - ruoka-annosID (PK)
 - nimi (Pakollinen)
 - annosmäärä (Pakollinen)
 
-#### Ruoka-ainesten ylläpito
+### Ruoka-ainesten ylläpito
 
 - ruoka-aineksetID (PK)
 - nimi (Pakollinen)
@@ -82,14 +65,14 @@ TODO painon seuranta
   - Pakollinen, jotta voidaan laskea annos. Käyttäjiltä voidaan myöhemmin kysyä palautetta, onko tarvetta muille painoille.
 - ruoka-annosID (FK)
 
-#### Annoksen ainesten ylläpito
+### Annoksen ainesten ylläpito
 
 - annoksenAineksetID (PK)
 - ruoka-annosID (FK)
 - ruoka-aineksetID (FK)
 - määrä (Pakollinen)
 
-#### RuokailuKirjausten ylläpito
+### RuokailuKirjausten ylläpito
 
 - kirjausID (PK)
 - käyttäjäID (FK)
@@ -98,13 +81,10 @@ TODO painon seuranta
   - Voidaan seurata mihin aikaan mikäkin merkintä on tapahtunut.
 - annosmäärä (Pakollinen)
 
-### Ulkoiset liittymät
+## Ulkoiset liittymät
 
-    --- Tässä voidaan täsmentää luvussa 2 yleisellä tasolla esitettyä kuvausta järjestelmän liitynnöistä. Esimerkiksi käyttöliittymän tarkempi kuvaus sekä liitynnät muihin järjestelmiin, oheislaitteisiin ja tietoliikenneyhteyksiin. ---
+Ulkoiset liittymät toimivat ottamalla yhteys tietokantaan ja suorittamalla kyselyjä.
 
-### Muut ominaisuudet
+## Muut ominaisuudet
 
-    --- Kuvataan järjestelmältä vaadittavat ei-toiminnalliset ominaisuudet: suorituskyky, käytettävyys, toipuminen virhetilanteista, turvallisuus, ylläpidettävyys, siirrettävyys jne. Esitä vaatimus siten, että se on testattavissa ja mitattavissa. ---
-
-![kuva tietokannasta](pictures/sql.jpg)
-![kuva hahmotelma tietokannoista](pictures/drawio.jpg)
+Ensimmäisessä versiossa ei tarvitse ottaa huomioon asioita, jotka eivät ole käyttäjäpalautteen keräämisen kannalta olennaisia.
